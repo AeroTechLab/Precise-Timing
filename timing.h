@@ -36,10 +36,10 @@ void Time_Delay( unsigned long milliseconds ) ;
 
 /// @brief Gets system time in milisseconds                             
 /// @return system clock ticks count converted to milliseconds 
-unsigned long Time_GetExecTimeMilliseconds();
+unsigned long Time_GetExecMilliseconds();
 
 /// @brief Gets system time in seconds                              
 /// @return system clock ticks count converted to seconds
-double Time_GetExecTimeSeconds();
+double Time_GetExecSeconds();
 
 #endif // TIMING_H

@@ -39,7 +39,7 @@ void Time_Delay( unsigned long waitMilliseconds )
 }
 
 // Get system time in milisseconds
-unsigned long Time_GetExecTimeMilliseconds()
+unsigned long Time_GetExecMilliseconds()
 {
   SRTIME execTimeNanoseconds = rt_timer_tsc2ns( rt_timer_tsc() ) ;
   
@@ -49,7 +49,7 @@ unsigned long Time_GetExecTimeMilliseconds()
 }
 
 // Get system time in seconds
-double Time_GetExecTimeSeconds()
+double Time_GetExecSeconds()
 {
     SRTIME execTimeNanoseconds = rt_timer_tsc2ns( rt_timer_tsc() ) ;
     
@@ -65,16 +65,16 @@ double Time_GetExecTimeSeconds()
 LARGE_INTEGER TICKS_PER_SECOND;
 
 // Make the calling thread wait for the given time ( in milliseconds )
-void Timing_Delay( unsigned long milliseconds )
+void Time_Delay( unsigned long milliseconds )
 {
     Sleep( milliseconds );
 }
 
 // Get system time in milliseconds
-unsigned long Timing_GetExecTimeMilliseconds()
+unsigned long Time_GetExecMilliseconds()
 {
     LARGE_INTEGER ticks;
-	  double exec_time;
+    double exec_time;
     
     QueryPerformanceFrequency( &TICKS_PER_SECOND );
     QueryPerformanceCounter( &ticks );
@@ -85,7 +85,7 @@ unsigned long Timing_GetExecTimeMilliseconds()
 }
 
 // Get system time in seconds
-double Timing_GetExecTimeSeconds()
+double Time_GetExecSeconds()
 {
     LARGE_INTEGER ticks;
     double exec_time;
@@ -103,19 +103,16 @@ double Timing_GetExecTimeSeconds()
 #include <time.h>
 
 // Make the calling thread wait for the given time ( in milliseconds )
-void Timing_Delay( unsigned long milliseconds )
+void Time_Delay( unsigned long milliseconds )
 {
-  static struct timespec delayTime;// = { milliseconds / 1000, ( milliseconds % 1000 ) * 1000000 };
-  static struct timespec remainingTime;
-    
-  delayTime.tv_sec = milliseconds / 1000;
-  delayTime.tv_nsec = ( milliseconds % 1000 ) * 1000000;
+  struct timespec delayTime = { .tv_sec = milliseconds / 1000, .tv_nsec = ( milliseconds % 1000 ) * 1000000 };
+  struct timespec remainingTime;
     
   nanosleep( &delayTime, &remainingTime );
 }
 
 // Get system time in milisseconds
-unsigned long Timing_GetExecTimeMilliseconds()
+unsigned long Time_GetExecMilliseconds()
 {
   struct timespec systemTime;
     
@@ -130,7 +127,7 @@ unsigned long Timing_GetExecTimeMilliseconds()
 }
 
 // Get system time in seconds
-double Timing_GetExecTimeSeconds()
+double Time_GetExecSeconds()
 {
   struct timespec systemTime;
   
