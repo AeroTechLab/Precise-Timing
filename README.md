@@ -12,4 +12,4 @@ Compiling this requires linking to the corresponding system's time libraries
 
 ### Documentation
 
-Descriptions of how the functions and data structures work are available at the [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html)-generated [documentation pages](https://labdin.github.io/Precise-Timing/timing_8h.html)
+Descriptions of how the functions and data structures work are available at the [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html)-generated [documentation pages](https://eesc-mkgroup.github.io/Precise-Timing/timing_8h.html)

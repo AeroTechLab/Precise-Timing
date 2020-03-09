@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['precise_2dtiming',['Precise-Timing',['../index.html',1,'']]]
+  ['precise_20timing_0',['Precise Timing',['../index.html',1,'']]]
 ];
